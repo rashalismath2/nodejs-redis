@@ -1,0 +1,37 @@
+<% include partials/header.ejs %>
+<% include partials/nav.ejs %>
+
+<form class="form p-5" method="post" action="/search/user">
+    <h3 class="text-black">Search for user</h3>
+    <div class="form-group">
+        <label for="my-input">ID</label>
+        <input id="my-input" IDs="form-control" type="text" name="id">
+    </div>
+    <div class="form-group">
+        <input class="btn btn-primary btn-submit" IDs="form-control" type="submit" name="submit">
+    </div>
+</form>
+
+<% if(typeof data !=="undefined" ){ %>
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1 class="display-4">Search Result</h1>
+            <p class="lead">User <span class="bg-success"><%=data.name %></span></p>
+            <hr class="my-4">
+            <p>Id: <%=data.id %></p>
+            <p>Email: <%=data.email %></p>
+        </div>    
+    </div>    
+<% } %>
+
+<% if(typeof errors !=="undefined"){ %>
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1 class="display-4"><span class="bg-danger">Error</span></h1>
+            <hr class="my-4">
+            <p><%=errors %></p>
+        </div>    
+    </div>    
+<% } %>
+
+<% include partials/footer.ejs  %>
